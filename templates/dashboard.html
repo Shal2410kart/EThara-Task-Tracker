@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dashboard</title>
+</head>
+<body style="font-family: Arial; padding: 20px;">
+    <h2>Welcome to your Dashboard (Access Level: {{ role }})</h2>
+    <a href="/logoff">Sign Out</a>
+    <hr>
+
+    {% if role == 'Admin' %}
+    <div style="background: #f0f0f0; padding: 10px;">
+        <h3>Assign a New Task</h3>
+        <form action="/create_new" method="POST">
+            Task Description: <input type="text" name="task_details" required>
+            Assign To: 
+            <select name="assign_to">
+                {% for u in users %}
+                    <option value="{{ u.id }}">{{ u.u_name }} ({{ u.access_level }})</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Add Task</button>
+        </form>
+    </div>
+    <hr>
+    {% endif %}
+
+    <h3>Current Tasks</h3>
+    <ul>
+        {% for t in tasks %}
+            <li><b>Task:</b> {{ t.task_details }} | <b>Status:</b> {{ t.current_status }} </li>
+        {% else %}
+            <p>No tasks assigned yet.</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>
