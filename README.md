@@ -2,9 +2,6 @@
 
 A Full-Stack role-based task management application built for the Ethara.AI assessment. 
 
-**Live Demo:** [Paste your Railway URL here]
-**Demo Video:** [Paste your Loom URL here]
-
 ### Tech Stack
 * **Backend:** Python, Flask
 * **Database:** PostgreSQL (Hosted via Railway), SQLAlchemy
